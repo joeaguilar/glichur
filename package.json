@@ -15,6 +15,8 @@
   "author": "Josef Aguilar",
   "license": "CC-BY-NC-4.0",
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "serve-favicon": "^2.3.0",
     "socket.io": "^1.4.4"
