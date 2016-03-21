@@ -1166,7 +1166,7 @@
   }
 
   function checkImageSize(img, canvas) {
-    console.log(img, img.height, img.width);
+    // console.log(img, img.height, img.width);
     if (img.height > 2048 || img.width > 2048) {
       alert('HUGE IMAGE!');
       var shrinkmeCanvas = document.createElement('canvas');

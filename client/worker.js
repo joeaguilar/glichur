@@ -1,9 +1,9 @@
 
   "use strict";
 
-  // importScripts('./effects.js');
-  // importScripts('./blends.js');
-  inportScripts('./target.js');
+  importScripts('./effects.js');
+  importScripts('./blends.js');
+  // inportScripts('./target.js');
 
   var effects = effectsCode();
   var blends = blendsCode();

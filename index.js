@@ -1,6 +1,7 @@
-// var http = require('http').Server(app);
-// var express = require('express');
-var app = require('express')();
+var http = require('http');
+var express = require('express');
+// var app = require('express')();
+var app = express();
 var fs = require('fs');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -44,105 +45,93 @@ var movieMajick = require('./lib/moviemajick');
 
 // })
 
-// var logger = require('morgan');
-
-// var passport = require('passport');
-// var LocalStrategy = require('passport-local').Strategy;
-
-
-// var routes = require('./routes/index');
-// var users = require('./routes/users');
-// var admin = require('./routes/admin');
-// var blog = require('./routes/blog');
-// var portfolio = require('./routes/portfolio');
-
-// var SessionStore = require('express-mysql-session');
-
-// Keep these configs here so they can be different
-/*
-var sessionStore = new SessionStore({
-  host     : 'localhost',
-  // port  : 1331,
-  user     : 'root',
-  password : '',
-  database : 'fcdeen',
-  checkExpirationInterval: 900000,
-  expiration: 86400000
-
-});
-*/
-// This is also possible
-// var sessionsStore = new SessionStore({}, require('./database/db'));
-
-
-// var app = express();
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
+// uncomment after placing your favicon in /assets/images/
 app.use(favicon(__dirname + '/assets/images/favicon.ico'));
-// app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// app.use(require('express-session')({
-//   key: "session-cookie-name",
-//   secret: "mkdolmioshio",
-//   store: sessionStore,
-//   resave: false,
-//   saveUninitialized: false
-// }));
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'views')));
-
-// app.use('/', routes);
-// app.use('/users', users);
-// app.use('/admin', admin);
-// app.use('/blog', blog);
-// app.use('/portfolio', portfolio);
-
+app.use(express.static(path.join(__dirname, '/')));
 
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/views/index.html");
 });
 
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+var port = normalizePort(process.env.PORT || '1221');
+app.set('port', port);
 
-// error handlers
+/**
+ * Create HTTP server.
+ */
 
-// development error handler
-// will print stacktrace
-// if (app.get('env') === 'development') {
-//   app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.render('error', {
-//       message: err.message,
-//       error: err
-//     });
-//   });
-// }
+var server = http.createServer(app);
 
-// // production error handler
-// // no stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.render('error', {
-//     message: err.message,
-//     error: {}
-//   });
-// });
+/**
+ * Listen on provided port, on all network interfaces.
+ */
 
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
-module.exports = app;
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  console.log('Listening on ' + bind);
+}
+// module.exports = app;
 
