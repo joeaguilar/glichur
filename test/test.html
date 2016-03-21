@@ -1,0 +1,61 @@
+<html>
+<head>
+  <title>Test Each Effect</title>
+</head>
+<style type="text/css">
+  body,html { margin:0; padding:0; font-family: "Futura", Helvetica; font-size: 16px}
+  #testmessage { overflow: scroll; width:auto; height: 45%;}
+  #testmessage p { padding: 10px; margin:0; border: 2px solid #000;}
+  #canvasholder  { background: rgba(0,0,0,0.45); padding: 10% 35%;  }
+  #canvasholder canvas  { background: white; }
+  #messageholder { padding: 40px 50px 0; background:lightgrey;}
+  #footerholder { height: auto; padding-top: 60px; padding-bottom: 60px; background:lightgrey;}
+  #footerholder > p { margin:0; padding:1px 16% 6px;}
+  #controlsholder { height: 124px; width: auto; background: #001099;}
+  #controlsholder div { padding: 47px 138px; border:none; }
+  #controlsholder button { padding: 10px; border-radius: 16px; border:none; box-shadow: 2px 2px 10px rgb(0, 0, 0);}
+  #controlsholder button:hover { color:red; background: ghostwhite; box-shadow:2px 2px 10px rgb(200,200,200);}
+  #controlsholder button:focus { color:red; background: ghostwhite; box-shadow:2px 2px 10px rgb(200,200,200);}
+  #hideerror   { color:red;}
+  #hidewarning { color:yellow; background: teal;}
+  #hidesuccess { color:brown;background: yellowgreen; }
+  #runtest     { color:lightgreen; background: blue;}
+  #generatecanvas {color:orange; background: rebeccapurple;}
+  .error    { color : #FFFFFF; background: #FF0055;}
+  .warning  { color : #000000; background: #FEFE51;}
+  .success  { color : #FFFFFF; background: #03FBC2;}
+  .time    { color : rgb(255, 118, 0);}
+  .runs    { color : rgb(0, 16, 153);}
+  .errornumber    { color :  #FF0055;}
+  .warningnumber  { color :  #FEFE51;}
+  .successnumber  { color :  #03FBC2;}
+  .hidden   { display: none;}
+</style>
+<body>
+  <main>
+    <section id="canvasholder">
+      <canvas id="phrayros">Test wont run, Not supported</canvas>
+    </section>
+    <section id="controlsholder">
+      <div>
+        <button id="generatecanvas">Generate Canvas</button>
+        <button id="runtest">Run Tests</button>
+        <button id="hidesuccess">Hide Successes</button>
+        <button id="hidewarning">Hide Warnings</button>
+        <button id="hideerror">Hide Errors</button>
+      </div>
+    </section>
+    <section id="messageholder">
+      <article id="testmessage">
+        <p class="success"> A Success!</p>
+        <p class="warning"> A Warning!</p>
+        <p class="error"> An Error!</p>
+      </article>
+    </section>
+    <footer id="footerholder"></footer>
+  </main>
+  <script type="text/javascript" src="../client/effects.js"></script>
+  <script type="text/javascript" src="../client/blends.js"></script>
+  <script type="text/javascript" src="clientjs.js"></script>
+</body>
+</html>

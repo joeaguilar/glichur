@@ -1,0 +1,28 @@
+{
+  "name": "glichur",
+  "version": "1.0.0",
+  "description": "Glitches images using canvas and socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "video",
+    "web",
+    "html5",
+    "nodejs"
+  ],
+  "author": "Josef Aguilar",
+  "license": "CC-BY-NC-4.0",
+  "dependencies": {
+    "express": "^4.13.4",
+    "serve-favicon": "^2.3.0",
+    "socket.io": "^1.4.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1"
+  }
+}
