@@ -1055,6 +1055,28 @@
   }
 
 
+  function promode () {
+    // Dont show effects
+    document.querySelector('#effects').classList.add('invisible');
+    // Dont show blends
+    document.querySelector('#blends').classList.add('invisible');
+    // Return controls
+    document.querySelector('#controls').classList.remove('invisible');
+    // Show original file inputs
+    document.querySelector('#fileinputs').classList.remove('hidden');
+    // Switch options for controls in display menu
+    document.querySelector('#te').dataset.toggle = "controls"
+    // Reflect this change in the menu
+    document.querySelector('#te').innerHTML = "<p>Controls</p>";
+    // Most of the menu is no longer needed
+    document.querySelector('#de').classList.add('hidden');
+    document.querySelector('#tq').classList.add('hidden');
+    // Move buttons back onto controls
+    var btns = document.querySelector('#button-bar').children[0];
+    document.forms[0].appendChild(btns);
+
+  }
+
 
   // =====================================
   // EVENTS DECORATORS
@@ -1865,7 +1887,7 @@ window.zoomReset = zoomReset;
 window.teardown = teardownApp;
 window.onload = bootstrapApp;
 window.onunload = teardownApp;
-
+window.promode = promode
 
 window.gl = GlitchWorker;
 
