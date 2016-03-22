@@ -1060,6 +1060,8 @@
     document.querySelector('#effects').classList.add('invisible');
     // Dont show blends
     document.querySelector('#blends').classList.add('invisible');
+    // Dont show file chooser menu
+    document.querySelector('#filechooser').classList.add('invisible');
     // Return controls
     document.querySelector('#controls').classList.remove('invisible');
     // Show original file inputs
@@ -1074,6 +1076,18 @@
     // Move buttons back onto controls
     var btns = document.querySelector('#button-bar').children[0];
     document.forms[0].appendChild(btns);
+    // Now hide the button bar
+    document.querySelector('#button-bar').classList.add('hidden');
+
+    document.forms[0].addEventListener('mouseup', disableActivePro, false);
+
+    function disableActivePro() {
+      var form = document.forms[0];
+      if (form.querySelector('.active')) {
+        form.querySelector('.active').removeAttribute('disabled');
+        form.querySelector('.active').classList.remove('active'); 
+      }
+    }
 
   }
 

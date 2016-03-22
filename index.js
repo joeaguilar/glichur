@@ -7,10 +7,10 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var io = require('socket.io')(http);
 var frameDir = __dirname + '/frames/';
 var movieMajick = require('./lib/moviemajick');
 
+// var io = require('socket.io')(http);
 // fs.mkdir(frameDir, function () {
   
 // })
