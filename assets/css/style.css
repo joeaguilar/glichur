@@ -117,9 +117,10 @@
       #imagebar {  background: linear-gradient(rgba(255, 20, 140, .75), rgba(3, 251, 194, 1)); position:absolute; width:100%; height: 100%; top:0; overflow:scroll; }
       #imagebar h2 { transition: 1s; padding-top:1%;padding-left:1%;color:#FFFFFF;font-family: 'VT323', 'Helvetica', sans-serif;letter-spacing: 10px;text-transform: uppercase; text-align: center;}
       #imagebar h2:hover { letter-spacing: 0; }
-      
+
       #stage { text-align: center;}
       #canvasstats { color: #FFFFFF;}
+      #canvasholder { margin: 0; display: flex; }
 
       #info { color: #FFFFFF;}
 
